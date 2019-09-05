@@ -1,0 +1,20 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_home"
+        android:title="@string/home"
+        android:icon="@drawable/home_icon" />
+
+    <item android:id="@+id/action_categories"
+        android:title="@string/favourites"
+        android:icon="@drawable/favourites_icon" />
+
+    <item android:id="@+id/action_orders"
+        android:title="@string/orders"
+        android:icon="@drawable/orders_icon" />
+
+    <item android:id="@+id/action_profile"
+        android:title="@string/profile"
+        android:icon="@drawable/profile_icon" />
+
+</menu>

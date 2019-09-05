@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Swakos</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="categories">Categories</string>
+    <string name="your_location">Your Location</string>
+    <string name="ic_fav">Favourite Icon</string>
+    <string name="home">Home</string>
+    <string name="orders">Orders</string>
+    <string name="favourites">Favourites</string>
+    <string name="profile">Profile</string>
+    <string name="ruppee_sign">\u20B9</string>
+
+    <string name="price_text">\u20B9 %1$s</string>
+    <string name="instant_validation">(Instant Validation)</string>
+    <string name="standard_terms_conditions"><![CDATA[Standard Terms & Conditions]]></string>
+    <string name="bullet">\u2022</string>
+
+    <string name="welcome_messages">\u20B9 %1$s</string>
+
+
+    <string name="counter_text">Item %1$s of %2$s</string>
+
+</resources>

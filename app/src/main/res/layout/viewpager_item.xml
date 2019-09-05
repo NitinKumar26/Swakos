@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlackDoubleLight">
+
+
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_margin="12dp"
+        app:srcCompat="@drawable/ic_close_24dp" />
+
+
+    <TextView
+        android:id="@+id/tv_item_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="8dp"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_centerHorizontal="true"
+        app:tabBackground="@drawable/indicator_selector"
+        app:tabIndicatorHeight="0dp"
+        app:tabMinWidth="3dp"
+        app:tabPaddingStart="10dp"
+        app:tabPaddingEnd="0dp"
+        android:layout_below="@id/tv_item_counter"
+        android:background="#00000000" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/indicator"
+        style="@style/AppTheme.Dialog" />
+
+</RelativeLayout>
