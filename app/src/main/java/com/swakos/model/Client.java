@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Client {
-    private String name, address, id, banner_url, documentID, client_desc;
+    private String name, address, id, banner_url, documentID, client_desc, type;
     private Timestamp created_at;
     private long contact_number;
     private Map<String, Long> ratings;
-    private Map<String, HashMap<String, Object>> special_deals;
+    private Map<String, HashMap<String, String>> special_deals;
     private HashMap<String, String> standard_terms;
 
     public HashMap<String, String> getStandard_terms() {
@@ -19,6 +19,14 @@ public class Client {
 
     public void setStandard_terms(HashMap<String, String> standard_terms) {
         this.standard_terms = standard_terms;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDocumentID() {
@@ -41,11 +49,11 @@ public class Client {
         return ratings;
     }
 
-    public Map<String, HashMap<String, Object>> getSpecial_deals() {
+    public Map<String, HashMap<String, String>> getSpecial_deals() {
         return special_deals;
     }
 
-    public void setSpecial_deals(Map<String, HashMap<String, Object>> special_deals) {
+    public void setSpecial_deals(Map<String, HashMap<String, String>> special_deals) {
         this.special_deals = special_deals;
     }
 

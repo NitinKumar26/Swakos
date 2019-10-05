@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relative_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/thumbnail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:background="#dddddd" />
+
+        <View
+            android:id="@+id/name"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/thumbnail"
+            android:background="#dddddd" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="8dp"
+            android:layout_below="@id/name"
+            android:layout_toEndOf="@id/thumbnail"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:id="@+id/linear_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thumbnail"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="100dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="160dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/thumbnail_two"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:background="#dddddd" />
+
+        <View
+            android:id="@+id/name_two"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/thumbnail_two"
+            android:background="#dddddd" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="8dp"
+            android:layout_below="@id/name_two"
+            android:layout_toEndOf="@id/thumbnail_two"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:id="@+id/linear_one_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thumbnail_two"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="100dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="160dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/thumbnail_three"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:background="#dddddd" />
+
+        <View
+            android:id="@+id/name_three"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/thumbnail_three"
+            android:background="#dddddd" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="8dp"
+            android:layout_below="@id/name_three"
+            android:layout_toEndOf="@id/thumbnail_three"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:id="@+id/linear_one_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thumbnail_three"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="100dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="160dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/thumbnail_four"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:background="#dddddd" />
+
+        <View
+            android:id="@+id/name_four"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/thumbnail_four"
+            android:background="#dddddd" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="8dp"
+            android:layout_below="@id/name_four"
+            android:layout_toEndOf="@id/thumbnail_four"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:id="@+id/linear_one__four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thumbnail_four"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="100dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginEnd="160dp"
+                android:layout_marginTop="10dp"
+                android:background="#dddddd" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

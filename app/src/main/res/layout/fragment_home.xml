@@ -2,6 +2,7 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,156 +12,187 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp">
-
-            <ImageView
-                android:id="@+id/ic_location"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                app:srcCompat="@drawable/ic_location_on_black_24dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="6dp"/>
-
-            <TextView
-                android:id="@+id/your_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/your_location"
-                android:textAllCaps="true"
-                android:textSize="8sp"
-                android:layout_marginTop="6dp"
-                android:fontFamily="none"
-                android:layout_toEndOf="@id/ic_location"/>
-
-            <TextView
-                android:id="@+id/tv_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Malyana"
-                android:textColor="@color/colorBlack"
-                android:layout_below="@id/your_location"
-                android:layout_marginStart="8dp"/>
-
-            <View
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/colorBlack"
-                android:layout_marginTop="8dp"
-                android:layout_below="@id/tv_city"/>
-
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_updates"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tv_categories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/categories"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="12dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:orientation="vertical"
-            android:gravity="top"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp">
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                app:tabBackground="@drawable/indicator_selector"
-                app:tabIndicatorHeight="0dp"
-                app:tabMinWidth="3dp"
-                app:tabPaddingStart="10dp"
-                app:tabPaddingEnd="0dp"
-                android:background="#00000000"
-                android:layout_marginStart="8dp"/>
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tv_trending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trending Right Now"
-            android:layout_marginStart="12dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:clipToPadding="false"/>
-
-        <TextView
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:text="Like What You See? You'll Like Us Even More Here:"/>
+            android:orientation="vertical"
+            app:shimmer_duration="1000">
+
+            <!-- Adding 3 rows of placeholders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/home_fragment_placeholder" />
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="52dp">
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <ImageView
-                android:id="@+id/ic_fb"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_facebook"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp">
 
-            <ImageView
-                android:id="@+id/ic_insta"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_instagram"
-                android:layout_marginStart="4dp"/>
+                <ImageView
+                    android:contentDescription="@string/app_name"
+                    android:id="@+id/ic_location"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:srcCompat="@drawable/ic_location_on_black_24dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_centerVertical="true"/>
 
-            <ImageView
-                android:id="@+id/ic_twitter"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_twitter"
-                android:layout_marginStart="4dp"/>
+                <TextView
+                    android:id="@+id/tv_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Lalla Pur"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18sp"
+                    android:layout_toEndOf="@id/ic_location"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"/>
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorBlack"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/tv_city"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_updates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/categories"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    app:tabBackground="@drawable/indicator_selector"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMinWidth="3dp"
+                    app:tabPaddingStart="10dp"
+                    app:tabPaddingEnd="0dp"
+                    android:background="#00000000"
+                    android:layout_marginStart="8dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_trending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trending Right Now"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_trendings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:clipToPadding="false"/>
+
+            <!--
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Like What You See? You'll Like Us Even More Here:"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="52dp">
+
+                <ImageView
+                    android:id="@+id/ic_fb"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_facebook"/>
+
+                <ImageView
+                    android:id="@+id/ic_insta"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_instagram"
+                    android:layout_marginStart="4dp"/>
+
+                <ImageView
+                    android:id="@+id/ic_twitter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_twitter"
+                    android:layout_marginStart="4dp"/>
+
+            </LinearLayout>
+            -->
 
         </LinearLayout>
 
     </LinearLayout>
+
 </androidx.core.widget.NestedScrollView>

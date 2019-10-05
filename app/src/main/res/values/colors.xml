@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Colors -->
+
+    <color name="colorPrimary">#f05545</color>
+    <color name="colorPrimaryLight">#ff8871</color>
+    <color name="colorPrimaryExtraLight">#ffb9a0</color>
+    <color name="colorPrimaryDark">#b71c1c</color>
+
+    <!--
+    <color name="colorPrimary">#e350fb</color>
+    <color name="colorPrimaryLight">#ff86ff</color>
+    <color name="colorPrimaryExtraLight">#ffb9ff</color>
+    <color name="colorPrimaryDark">#ad00c7</color>
+    -->
+
+    <!--
     <color name="colorPrimary">#d75d07</color>
     <color name="colorPrimaryLight">#ff8d3e</color>
     <color name="colorPrimaryExtraLight">#ffbe6d</color>
     <color name="colorPrimaryDark">#9f2e00</color>
-
+    -->
 
     <!-- Accent(Secondary) Colors -->
     <color name="colorAccent">#000000</color>

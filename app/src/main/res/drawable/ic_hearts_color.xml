@@ -7,21 +7,21 @@
 
   <path
       android:pathData="M112.801,22.801C100.602,10.602 81,10.602 68.801,22.801L63.398,28L58,22.801C45.801,10.602 26.199,10.602 14,22.801C1.801,35 1.801,54.602 14,66.801L62.801,115.801L63.398,115.199L64,115.801L112.801,67C125,54.602 125,34.801 112.801,22.801Z"
-      android:fillColor="@color/colorPrimaryLight"
+      android:fillColor="@color/colorPrimary"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>
 
   <path
       android:pathData="M37.199,35.199L47,45L63.199,28.801L53.398,19C49,14.602 41.602,14.602 37.199,19C32.602,23.398 32.602,30.602 37.199,35.199Z"
-      android:fillColor="@color/colorPrimaryLight"
+      android:fillColor="@color/colorPrimary"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>
 
   <path
       android:pathData="M99,49.199L56.199,92C54,94.199 52.602,97.398 52.602,100.398C52.602,103.602 53.801,106.602 56.199,108.801L63.199,115.801L114.398,64.602C118.602,60.398 118.602,53.398 114.398,49C110.199,44.801 103.199,44.801 99,49.199Z"
-      android:fillColor="@color/colorPrimaryLight"
+      android:fillColor="@color/colorPrimary"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>

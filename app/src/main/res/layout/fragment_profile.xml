@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -18,6 +19,7 @@
             android:layout_centerInParent="true"
             android:layout_marginEnd="12dp"
             app:srcCompat="@drawable/ic_notifications"
+            android:visibility="gone"
             />
 
     </RelativeLayout>
@@ -53,14 +55,14 @@
                     android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nitin Kumar"
+                    tools:text="Nitin Kumar"
                     android:textColor="#515C6F"
                     android:textSize="24sp"/>
                 <TextView
                     android:id="@+id/user_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="8923330735"
+                    tools:text="8923330735"
                     android:layout_marginBottom="8dp"/>
                 <TextView
                     android:id="@+id/edit_profile"
@@ -71,6 +73,7 @@
                     android:textAllCaps="true"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
+                    android:visibility="gone"
                     android:background="@drawable/edit_profile_bg"/>
             </LinearLayout>
         </LinearLayout>
@@ -104,10 +107,11 @@
         android:textColor="@color/colorPrimary"/>
 
     <TextView
+        android:id="@+id/tv_versionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="4dp"
-        android:text="App Version : 208.015.10 " />
+        tools:text="App Version : 208.015.10 " />
 
 </LinearLayout>

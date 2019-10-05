@@ -5,14 +5,14 @@
     android:viewportHeight="128">
   <path
       android:pathData="M16,82L50,66L64,70L78,66L112,82C118.133,84.398 122,92.336 122,98.922L122,114C122,116.211 120.211,118 118,118L10,118C7.789,118 6,116.211 6,114L6,98.922C6,92.336 9.867,84.398 16,82Z"
-      android:fillColor="@color/colorPrimaryLight"
+      android:fillColor="@color/colorPrimary"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>
 
   <path
       android:pathData="M64,90C74.32,90 86,84 92,72L78,66L64,70L52,66L36,72C41.852,80.152 53.68,90 64,90Z"
-      android:fillColor="@color/colorPrimary"
+      android:fillColor="@color/colorPrimaryDark"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>
@@ -33,7 +33,7 @@
 
   <path
       android:pathData="M52,22C58,26 70.707,28 76,28C83.777,28 84,28 88,28C88,28 92,26 94,28C88,10 74.117,6 68,6L60,6C56.777,6 52,8 50,10C44.391,8.207 38,14.984 38,24L38,36C44,34 50,24 52,22Z"
-      android:fillColor="@color/colorPrimaryExtraLight"
+      android:fillColor="@color/colorPrimaryLight"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>

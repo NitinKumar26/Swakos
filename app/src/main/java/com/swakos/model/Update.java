@@ -1,27 +1,41 @@
 package com.swakos.model;
 
-import com.google.gson.annotations.SerializedName;
-
-/**
- * Created by belal on 19/4/17.
- */
-
 public class Update {
 
-    private int mImageResourceId;
-    private String mName;
+    private String image_address;
+    private String name;
+    private String type;
+    private String category;
 
-    public Update(String name, int mImageResourceId) {
-        this.mName = name;
-        this.mImageResourceId = mImageResourceId;
+    public String getCategory() {
+        return category;
     }
 
-    public int getmImageResourceId() {
-        return mImageResourceId;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public void setmImageResourceId(int mImageResourceId) {
-        this.mImageResourceId = mImageResourceId;
+    public String getType() {
+        return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImage_address() {
+        return image_address;
+    }
+
+    public void setImage_address(String image_address) {
+        this.image_address = image_address;
+    }
 }

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_little">
+
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:id="@+id/deal_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cornerRadius="12dp"
+            android:scaleType="centerCrop"
+            app:roundedCorners="topRight|topLeft"
+            android:layout_margin="1.4dp"
+            android:visibility="visible"
+            android:background="#dddddd"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/client_name"
+                    android:layout_width="150dp"
+                    android:layout_height="10dp"
+                    tools:text="KFC Shopprix Mall, Meerut"
+                    android:textStyle="bold"
+                    android:background="#dddddd"/>
+
+                <View
+                    android:id="@+id/client_address"
+                    android:layout_width="120dp"
+                    android:layout_height="10dp"
+                    android:textSize="12sp"
+                    android:background="#dddddd"
+                    android:layout_marginTop="4dp"
+                    tools:text="Shopprix Mall, 2.9 Km"/>
+
+                <LinearLayout
+                    android:id="@+id/linear_special_deals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/linear_first_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <View
+                            android:layout_width="130dp"
+                            android:layout_height="10dp"
+                            android:textStyle="bold"
+                            android:background="#dddddd"/>
+
+                        <RelativeLayout
+                            android:id="@+id/relative_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:id="@+id/ruppee"
+                                android:layout_width="8dp"
+                                android:layout_height="10dp"
+                                android:text="@string/ruppee_sign"
+                                android:background="#dddddd"
+                                android:layout_marginTop="8dp"
+                                />
+
+                            <View
+                                android:id="@+id/deal_regular_price"
+                                android:layout_width="16dp"
+                                android:layout_height="10dp"
+                                android:background="#dddddd"
+                                android:layout_toEndOf="@id/ruppee"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="8dp"
+                                android:textSize="16sp"/>
+
+                            <View
+                                android:id="@+id/deal_off_price"
+                                android:layout_width="16dp"
+                                android:layout_height="10dp"
+                                android:layout_marginTop="8dp"
+                                android:background="#dddddd"
+                                android:layout_toEndOf="@id/deal_regular_price"
+                                android:layout_marginStart="8dp"
+                                tools:text="111"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="16sp"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:id="@+id/linear_second_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/view_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.4dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:background="#cccccc" />
+
+                        <View
+                            android:id="@+id/deal_title_second"
+                            android:layout_width="130dp"
+                            android:layout_height="10dp"
+                            android:background="#dddddd"
+                            tools:text="Chicken Longer Combo"
+                            android:layout_marginTop="8dp"/>
+
+                        <RelativeLayout
+                            android:id="@+id/relative_second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:id="@+id/ruppee_second"
+                                android:layout_width="8dp"
+                                android:layout_height="10dp"
+                                android:text="@string/ruppee_sign"
+                                android:background="#dddddd"
+                                android:layout_marginTop="8dp"/>
+
+                            <View
+                                android:id="@+id/deal_regular_price_second"
+                                android:layout_width="16dp"
+                                android:layout_height="10dp"
+                                android:layout_marginTop="8dp"
+                                android:background="#dddddd"
+                                android:layout_toEndOf="@id/ruppee_second"
+                                android:layout_marginStart="4dp" />
+
+                            <View
+                                android:id="@+id/deal_off_price_second"
+                                android:layout_width="16dp"
+                                android:layout_height="10dp"
+                                android:background="#dddddd"
+                                android:layout_marginTop="8dp"
+                                android:layout_toEndOf="@id/deal_regular_price_second"
+                                android:layout_marginStart="8dp" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/tv_rating"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentEnd="true"
+                tools:text="4.5"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:background="#dddddd"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -2,10 +2,8 @@ package com.swakos.categoriesActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,11 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.swakos.ClientActivity;
@@ -26,6 +21,8 @@ import com.swakos.R;
 import com.swakos.adapter.ClientAdapter;
 import com.swakos.helper.HelperMethods;
 import com.swakos.model.Client;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 
@@ -37,6 +34,13 @@ public class RestaurantActivity extends AppCompatActivity {
     private String mClientType;
     private String clientId;
     private RecyclerView clientRecyclerView;
+    private String titleString;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,19 +49,19 @@ public class RestaurantActivity extends AppCompatActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar_main)); //set toolbar as actionBar
 
+        titleString = getIntent().getStringExtra("title");
+        //StringUtils.capitalize(titleString);
+
         if (getSupportActionBar()!= null) {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Set up action in the action bar
-            getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
+            getSupportActionBar().setTitle(StringUtils.capitalize(titleString));
         }
 
         db = FirebaseFirestore.getInstance();
         mClientsList = new ArrayList<>();
         progressBar = findViewById(R.id.progress_bar);
-        mClientType = getIntent().getStringExtra("title");
-
-        if (mClientType != null)
-            Log.d("client_type", mClientType);
+        mClientType = getIntent().getStringExtra("category");
 
 
         clientRecyclerView = findViewById(R.id.recV_client_details);
@@ -73,6 +77,7 @@ public class RestaurantActivity extends AppCompatActivity {
                 if (mClientsList.get(position).getBanner_url() != null) intent.putExtra("banner_url", mClientsList.get(position).getBanner_url());
                 intent.putExtra("client_name", mClientsList.get(position).getName());
                 intent.putExtra("client_type", mClientType);
+                intent.putExtra("client_contact", String.valueOf(mClientsList.get(position).getContact_number()));
                 intent.putExtra("client_address", mClientsList.get(position).getAddress());
                 intent.putExtra("client_id", mClientsList.get(position).getId());
                 intent.putExtra("client_doc_id", mClientsList.get(position).getDocumentID());
@@ -86,9 +91,11 @@ public class RestaurantActivity extends AppCompatActivity {
         getClients();
     }
     private void  getClients() {
-        db.collection("cities")
+        db.collection("available_cities")
                 .document("meerut")
-                .collection(mClientType)
+                .collection("data")
+                .document(mClientType)
+                .collection("clients_list")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

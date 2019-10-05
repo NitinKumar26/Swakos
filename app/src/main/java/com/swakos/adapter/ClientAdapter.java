@@ -21,12 +21,15 @@ import java.util.HashMap;
 public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder> {
     private ArrayList<Client> mClientsList;
     private Context mContext;
-    private HashMap<String, Object> specialDealItem, secondSpecialDeal;
+    private HashMap<String, String> specialDealItem, secondSpecialDeal;
     private String actual_price_first, actual_price_second, off_price_first, off_price_second, title_first, title_second;
+    private TextView tvDealTitle, tvDealPrice, tvDealOffPrice, tvDealTitleSecond, tvDealPriceSecond, tvDealOffPriceSecond;
+    private RelativeLayout relativeFirst, relativeSecond;
 
     public ClientAdapter(ArrayList<Client> mClientsList, Context mContext) {
         this.mClientsList = mClientsList;
         this.mContext = mContext;
+        setHasStableIds(true);
     }
 
     @NonNull
@@ -38,7 +41,6 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ClientAdapter.ViewHolder holder, int position) {
-
         Client client = mClientsList.get(position);
         holder.tvClientName.setText(client.getName());
         holder.tvClientAddress.setText(client.getAddress());
@@ -50,36 +52,10 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder
             holder.tvRating.setText("-");
         }
 
-        if (client.getSpecial_deals() != null) {
-            if (client.getSpecial_deals().get("first_deal") != null) {
-                specialDealItem = client.getSpecial_deals().get("first_deal");
-                title_first = specialDealItem.get("title").toString();
-                actual_price_first = specialDealItem.get("actual_price").toString();
-                off_price_first = specialDealItem.get("off_price").toString();
-            }
-
-            if (client.getSpecial_deals().get("second_deal") != null) {
-                secondSpecialDeal = client.getSpecial_deals().get("second_deal");
-                title_second = secondSpecialDeal.get("title").toString();
-                actual_price_second = secondSpecialDeal.get("actual_price").toString();
-                off_price_second = secondSpecialDeal.get("off_price").toString();
-            } else {
-                holder.tvDealTitleSecond.setVisibility(View.GONE);
-                holder.relativeSecond.setVisibility(View.GONE);
-            }
-        }else holder.linearSpecialDeals.setVisibility(View.GONE); //Hide Special Deals Linear Layout if there are no special deals available
-
-
-        holder.tvDealPrice.setText(actual_price_first);
-        holder.tvDealOffPrice.setText(off_price_first);
-        holder.tvDealTitle.setText(title_first);
-
-        holder.tvDealPriceSecond.setText(actual_price_second);
-        holder.tvDealOffPriceSecond.setText(off_price_second);
-        holder.tvDealTitleSecond.setText(title_second);
-
         //holder.tvRating.setText(client.getAverage_rating());
         Glide.with(mContext).load(client.getBanner_url()).placeholder(R.drawable.placeholder_gradient).into(holder.mDealImage);
+
+        checkSpecialDeals(client, holder.linearFirstItem, holder.linearSecondItem);
 
     }
 
@@ -89,18 +65,22 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvDealTitle, tvDealPrice, tvDealOffPrice, tvClientName, tvClientAddress,
-                tvDealTitleSecond, tvDealPriceSecond, tvDealOffPriceSecond, tvRating;
+        private TextView tvClientName, tvClientAddress, tvRating;
         private ImageView mDealImage;
         private LinearLayout linearSpecialDeals;
-        private RelativeLayout relativeSecond;
+        private View dividerView;
+        private LinearLayout linearFirstItem, linearSecondItem;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             //Linear Special Deals
             linearSpecialDeals = itemView.findViewById(R.id.linear_special_deals);
+            linearFirstItem = itemView.findViewById(R.id.linear_first_item);
+            linearSecondItem = itemView.findViewById(R.id.linear_second_item);
             //Relative Second
             relativeSecond = itemView.findViewById(R.id.relative_second);
+            relativeFirst = itemView.findViewById(R.id.relative_first);
+            dividerView = itemView.findViewById(R.id.view_divider);
 
             //First Deal Views
             tvDealTitle = itemView.findViewById(R.id.deal_title);  //First Deal Title
@@ -126,4 +106,80 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder
     public void setItems(ArrayList<Client> clients){
         this.mClientsList = clients;
     }
+
+    private void checkSpecialDeals(@NonNull Client item, LinearLayout linearItem, LinearLayout liearItemSecondDeal) {
+
+        if (item.getSpecial_deals() != null){
+            if (item.getSpecial_deals().get("first_deal") != null) { // Check if the first special deal exists
+                specialDealItem = item.getSpecial_deals().get("first_deal"); //get first special deal HashMap
+                showViews(linearItem); //show the first special deal views
+                setSpecialDeals(specialDealItem, tvDealTitle, tvDealPrice, tvDealOffPrice, relativeFirst, relativeSecond); //update the UI with special deal;
+            }
+            if (item.getSpecial_deals().get("second_deal") != null){
+                secondSpecialDeal = item.getSpecial_deals().get("second_deal"); //Check if the second special deal exists
+                showViews(liearItemSecondDeal); //Get the second special Deal
+                setSpecialDeals(secondSpecialDeal, tvDealTitleSecond, tvDealPriceSecond, tvDealOffPriceSecond, relativeFirst, relativeSecond); //Update the UI with special deal
+            }else hideViews(liearItemSecondDeal);
+        }else {
+            hideViews(linearItem);
+            hideViews(liearItemSecondDeal);
+        }
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    private void setSpecialDeals(@NonNull HashMap<String, String> deal, @NonNull TextView tvTitle, @NonNull TextView tvActualPrice,
+                                 @NonNull TextView tvOffPrice, RelativeLayout relativeFirst, RelativeLayout relativeSecond) {
+        if (deal == specialDealItem) {
+            title_first = deal.get("title");
+            actual_price_first = deal.get("actual_price");
+            off_price_first = deal.get("off_price");
+
+            if (actual_price_first.isEmpty())
+                hidePriceView(relativeFirst);
+
+            tvTitle.setText(title_first);
+            tvActualPrice.setText(actual_price_first);
+            tvOffPrice.setText(off_price_first);
+
+        }else{
+            title_second = deal.get("title");
+            actual_price_second = deal.get("actual_price");
+            off_price_second = deal.get("off_price");
+
+            if (actual_price_second.isEmpty())
+                hidePriceView(relativeFirst);
+
+            tvDealTitleSecond.setText(title_second);
+            tvDealPriceSecond.setText(actual_price_second);
+            tvDealOffPriceSecond.setText(off_price_second);
+        }
+
+
+    }
+
+    private void hidePriceView(@NonNull RelativeLayout relativeItems){
+        relativeItems.setVisibility(View.GONE);
+    }
+    private void showPriceView (@NonNull RelativeLayout relativeItems){
+        relativeItems.setVisibility(View.VISIBLE);
+    }
+
+    private void showViews(@NonNull LinearLayout item){
+        item.setVisibility(View.VISIBLE);
+    }
+
+    private void hideViews(@NonNull LinearLayout item){
+        item.setVisibility(View.GONE);
+    }
+
+
 }

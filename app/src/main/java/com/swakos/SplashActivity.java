@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private static int SPLASH_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,24 +30,18 @@ public class SplashActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance(); //Get current Firebase Auth Instance
 
+        int SPLASH_TIME_OUT = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //This method will be executed once the timer is over
                 //Start your app main activity
-                if (mAuth.getCurrentUser() != null){
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    //Close the activity
-                    finish();
-                }else{
                     Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
                     startActivity(intent);
                     //Close the activity
                     finish();
-                }
             }
-        }, SPLASH_TIME_OUT );
+        }, SPLASH_TIME_OUT);
     }
 
 

@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +12,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.New.NoActionBar">
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -21,24 +23,57 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".categoriesActivity.FitnessActivity" />
-        <activity android:name=".categoriesActivity.GamesActivity" />
-        <activity android:name=".categoriesActivity.HotDealsActivity" />
-        <activity android:name=".categoriesActivity.HotelActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".categoriesActivity.FitnessActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".categoriesActivity.GamesActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".categoriesActivity.HotDealsActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".categoriesActivity.HotelActivity"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".categoriesActivity.RestaurantActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".categoriesActivity.SalonActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".ClientActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".categoriesActivity.SalonActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ClientActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".SignupActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".DealActivity"
+            android:screenOrientation="portrait"
             />
-        <activity android:name=".DealQRActivity" android:theme="@style/AppTheme.Dialog"/>
+
+        <activity android:name=".DealQRActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dialog"/>
+
+        <activity android:name=".ActivatedDealActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CancelOfferActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dialog"/>
+        <activity android:name=".AllOrdersActivity" />
+        <activity android:name=".SuggestionActivity" />
+
+        <activity android:name=".PopupCancelActivity" />
+
 
     </application>
 

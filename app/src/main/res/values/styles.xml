@@ -6,7 +6,23 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/istok_web_regular</item>
+    </style>
 
+
+    <style name="AppTheme.New" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize  you theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/istok_web_regular</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.New.NoActionBar" parent="AppTheme.New">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
 

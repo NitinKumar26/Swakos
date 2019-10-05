@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.swakos.R;
+import com.swakos.helper.GlideApp;
 import com.swakos.model.Update;
 import java.util.ArrayList;
 
@@ -30,7 +32,10 @@ public class SliderAdapterNew extends RecyclerView.Adapter<SliderAdapterNew.View
     @Override
     public void onBindViewHolder(@NonNull SliderAdapterNew.ViewHolder holder, int position) {
         Update update = mUpdatesList.get(position);
-        holder.imageView.setImageResource(update.getmImageResourceId());
+        GlideApp.with(mContext)
+                .load(update.getImage_address())
+                .placeholder(mContext.getResources().getDrawable(R.drawable.placeholder_gradient))
+                .into(holder.imageView);
     }
 
     @Override
@@ -44,5 +49,9 @@ public class SliderAdapterNew extends RecyclerView.Adapter<SliderAdapterNew.View
             super(itemView);
             imageView = itemView.findViewById(R.id.slider_image);
         }
+    }
+
+    public void setItems(ArrayList<Update> updates){
+        this.mUpdatesList = updates;
     }
 }

@@ -17,8 +17,21 @@
     <string name="bullet">\u2022</string>
 
     <string name="welcome_messages">\u20B9 %1$s</string>
+    <string name="app_version">App Version : %1$s</string>
 
 
     <string name="counter_text">Item %1$s of %2$s</string>
+    <string name="pending_text">Oops! You already have a pending deal at:</string>
+    <string name="activate_now">Activate Now</string>
+    <string name="takeaway">Takeaway</string>
+    <string name="dine_in">Dine-in</string>
+    <string name="instruction_one">1. You can avail this deal at %1$s.</string>
+    <string name="instruction_two">2. If you want to activate another deal of %1$s then you have to cancel or avail the above deal.</string>
+    <string name="instruction_three">3. You can only activate or get a deal of a particular outlet in a single day.</string>
+
+    <string name="web_client_id">761195145952-bkokrtigg1833j7kb0p538j4nt4vveae.apps.googleusercontent.com</string>
+    <string name="web_client_secret">WXFMdLxKFnbYS7uoV3TTbkel</string>
+    <string name="are_you_sure">Are you sure you want to miss this great offer at %1$s.</string>
+    <string name="you_dont">You don\'t have any favourites yet.</string>
 
 </resources>

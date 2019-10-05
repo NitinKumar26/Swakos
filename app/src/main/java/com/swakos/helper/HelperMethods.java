@@ -1,5 +1,6 @@
 package com.swakos.helper;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -32,10 +33,30 @@ public class HelperMethods {
         transaction.commit();
     }
 
-
     public static void loadFragmentNew(Fragment fragment, FragmentActivity activity){
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
+        transaction.commit();
+    }
+
+    public static void showFragment(Fragment fragment, AppCompatActivity activity){
+        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+        //transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        if (fragment.isAdded()) {
+            transaction.show(fragment);
+            //else transaction.hide(fragment);
+        }else {
+            transaction.add(R.id.frame_container, fragment);
+            transaction.show(fragment);
+        }
+        transaction.commit();
+    }
+
+    public static void hideFragment(Fragment fragment, AppCompatActivity activity){
+        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+        //transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        if (fragment.isAdded())
+            transaction.hide(fragment);
         transaction.commit();
     }
 
@@ -45,6 +66,12 @@ public class HelperMethods {
         appCompatActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         float logincalDensity = metrics.density;
         return (int) Math.ceil(dp * logincalDensity);
+    }
+
+    public static int getPageMargin(@NonNull Activity activity){
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        return ((metrics.widthPixels / 3) * 2);
     }
 
 

@@ -43,7 +43,6 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/indicator"
-        style="@style/AppTheme.Dialog" />
+        android:layout_below="@id/indicator" />
 
 </RelativeLayout>

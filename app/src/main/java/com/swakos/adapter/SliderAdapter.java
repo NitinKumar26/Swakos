@@ -1,6 +1,7 @@
 package com.swakos.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.bumptech.glide.Glide;
+import com.swakos.categoriesActivity.RestaurantActivity;
+import com.swakos.helper.GlideApp;
 import com.swakos.model.Update;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import com.swakos.R;
 public class SliderAdapter extends PagerAdapter {
 
     private final Context mContext;
-    private final ArrayList<Update> mUpdateList;
+    private ArrayList<Update> mUpdateList;
 
     public SliderAdapter(Context context, ArrayList<Update> updateList) {
         this.mContext = context;
@@ -46,9 +48,20 @@ public class SliderAdapter extends PagerAdapter {
             if (inflater != null){
                 view = inflater.inflate(R.layout.slider_item, container, false);
                 ImageView imageView = view.findViewById(R.id.slider_imageView);
-                Glide.with(mContext)
-                        .load(update.getmImageResourceId())
+                GlideApp.with(mContext)
+                        .load(update.getImage_address())
+                        .placeholder(mContext.getResources().getDrawable(R.drawable.placeholder_gradient))
                         .into(imageView);
+
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), RestaurantActivity.class);
+                        intent.putExtra("category", update.getCategory());
+                        intent.putExtra("title", update.getCategory());
+                        view.getContext().startActivity(intent);
+                    }
+                });
             }
             ViewPager viewPager = (ViewPager) container;
             viewPager.addView(view, 0);
@@ -61,5 +74,9 @@ public class SliderAdapter extends PagerAdapter {
         ViewPager viewPager = (ViewPager) container;
         View view = (View) object;
         viewPager.removeView(view);
+    }
+
+    public void setItems(ArrayList<Update> updates){
+        this.mUpdateList = updates;
     }
 }

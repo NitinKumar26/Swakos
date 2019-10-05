@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
@@ -19,9 +20,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.swakos.MainActivity;
 import com.swakos.R;
 import com.swakos.helper.HelperMethods;
+import com.swakos.helper.PrefManager;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +35,8 @@ public class OTPFragment extends Fragment implements View.OnClickListener{
     private String verificationId;
     private EditText editText;
     private ProgressBar progressBar;
+    private FirebaseFirestore db;
+    private String userId;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,7 +49,7 @@ public class OTPFragment extends Fragment implements View.OnClickListener{
 
         //Get the firebase auth instance
         mAuth = FirebaseAuth.getInstance();
-
+        db = FirebaseFirestore.getInstance();
 
         editText = view.findViewById(R.id.otp_field);
         progressBar = view.findViewById(R.id.progress_bar);
@@ -82,16 +88,37 @@ public class OTPFragment extends Fragment implements View.OnClickListener{
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
-                            if (getActivity() != null)
-                                HelperMethods.loadFragmentNew(new UserDetailsFragment(), getActivity());
 
-                            //Intent intent = new Intent(getContext(), MainActivity.class);
-                            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            //startActivity(intent);
+                            if (mAuth.getCurrentUser() != null)
+                                userId = mAuth.getCurrentUser().getUid();
+
+                            db.collection("users").document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()){
+                                        PrefManager prefManager;
+                                        if (getContext() != null) {
+                                            prefManager = new PrefManager(getContext());
+                                            if (documentSnapshot.getString("phone_number") != null)
+                                                prefManager.setUserData(documentSnapshot.getString("name"), documentSnapshot.getString("phone_number")
+                                                        , documentSnapshot.getString("user_id"));
+                                            else
+                                                prefManager.setUserData(documentSnapshot.getString("name"), documentSnapshot.getString("email")
+                                                        , documentSnapshot.getString("user_id"));
+                                        }
+                                        Intent intent = new Intent(getContext(), MainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    }else{
+                                        if (getActivity() != null) HelperMethods.loadFragmentNew(new UserDetailsFragment(), getActivity());
+                                    }
+                                }
+                            });
                         } else {
                             progressBar.setVisibility(View.GONE);
                             if (task.getException() != null)
-                                Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                if (getContext() != null)
+                                    Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });

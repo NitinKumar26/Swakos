@@ -5,19 +5,19 @@
     android:viewportHeight="128">
   <path
       android:pathData="M90.82,111.66L65.18,92.859C64.477,92.348 63.523,92.348 62.82,92.859L37.18,111.66C36.566,112.109 35.75,112.172 35.074,111.82C34.398,111.465 33.984,110.762 34,110L34,16C34,14.895 34.895,14 36,14L92,14C93.105,14 94,14.895 94,16L94,110C94.016,110.762 93.602,111.465 92.926,111.82C92.25,112.172 91.434,112.109 90.82,111.66Z"
-      android:fillColor="@color/colorPrimaryLight"
+      android:fillColor="@color/colorPrimary"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>
   <path
       android:pathData="M90.82,97.66L67.539,80.602C65.426,79.051 62.551,79.051 60.441,80.602L37.18,97.66C36.566,98.109 35.75,98.172 35.074,97.82C34.398,97.465 33.984,96.762 34,96L34,110C33.996,110.754 34.422,111.445 35.094,111.789C35.766,112.129 36.57,112.066 37.18,111.621L62.82,92.82C63.523,92.305 64.477,92.305 65.18,92.82L90.82,111.621C91.43,112.066 92.234,112.129 92.906,111.789C93.578,111.445 94.004,110.754 94,110L94,96C94.016,96.762 93.602,97.465 92.926,97.82C92.25,98.172 91.434,98.109 90.82,97.66Z"
-      android:fillColor="@color/colorPrimaryLight"
+      android:fillColor="@color/colorPrimary"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>
   <path
       android:pathData="M92,14L36,14C34.895,14 34,14.895 34,16L34,26C34,24.895 34.895,24 36,24L92,24C93.105,24 94,24.895 94,26L94,16C94,14.895 93.105,14 92,14Z"
-      android:fillColor="@color/colorPrimaryLight"
+      android:fillColor="@color/colorPrimary"
       android:fillAlpha="1"
       android:fillType="nonZero"
       android:strokeColor="#00000000"/>

@@ -60,22 +60,65 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="12dp">
 
 
             <TextView
                 android:id="@+id/tv_dont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already have an account?" />
+                android:text="Or" />
 
-            <TextView
+            <androidx.cardview.widget.CardView
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginStart="4dp" />
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:id="@+id/btn_google"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:clickable="false"
+                        android:background="#0000"
+                        app:srcCompat="@drawable/ic_google_logo"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:textColor="@color/colorBlack"
+                        android:text="Sign in with Google"
+                        android:layout_marginStart="12dp"
+                        android:letterSpacing="-0.05"
+                        android:fontFamily="null"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--
+
+            <TextView
+                android:id="@+id/tv_other_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="or via other Email"
+                android:textColor="#8c8c8c"
+                android:fontFamily="null"/>
+
+                -->
 
         </LinearLayout>
 

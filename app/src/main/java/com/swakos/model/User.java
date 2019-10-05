@@ -3,7 +3,7 @@ package com.swakos.model;
 import com.google.firebase.Timestamp;
 
 public class User {
-    private String name, email, user_id, phone_number, provider_id;
+    private String name, email, user_id, phone_number, provider_id, user_doc_id;
     private Timestamp created_at;
 
     public Timestamp getCreated_at() {
@@ -15,6 +15,14 @@ public class User {
     }
 
     public User() {
+    }
+
+    public String getUser_doc_id() {
+        return user_doc_id;
+    }
+
+    public void setUser_doc_id(String user_doc_id) {
+        this.user_doc_id = user_doc_id;
     }
 
     public String getName() {

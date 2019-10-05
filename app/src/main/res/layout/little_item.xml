@@ -18,7 +18,7 @@
         android:scaleType="centerCrop"
         app:roundedCorners="topRight|topLeft"
         android:layout_margin="1.4dp"
-        android:visibility="visible" />
+        android:visibility="visible"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -48,83 +48,115 @@
 
             <LinearLayout
                 android:id="@+id/linear_special_deals"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="8dp">
 
-                <TextView
-                    android:id="@+id/deal_title"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/linear_first_item"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Chicken Longer Combo" />
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
                     <TextView
-                        android:id="@+id/ruppee"
+                        android:id="@+id/deal_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ruppee_sign"/>
+                        tools:text="Chicken Longer Combo" />
 
-                    <TextView
-                        android:id="@+id/deal_regular_price"
+                    <RelativeLayout
+                        android:id="@+id/relative_first"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="128"
-                        android:layout_toEndOf="@id/ruppee"
-                        android:layout_marginStart="4dp"/>
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/deal_off_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/deal_regular_price"
-                        android:layout_marginStart="8dp"
-                        tools:text="111"
-                        android:textColor="@color/colorPrimary" />
+                        <TextView
+                            android:id="@+id/ruppee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ruppee_sign"
+                            />
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/deal_regular_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="128"
+                            android:layout_toEndOf="@id/ruppee"
+                            android:layout_marginStart="4dp"
+                            android:textSize="16sp"/>
 
-                <TextView
-                    android:id="@+id/deal_title_second"
-                    android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/deal_off_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/deal_regular_price"
+                            android:layout_marginStart="8dp"
+                            tools:text="111"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:id="@+id/linear_second_item"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Chicken Longer Combo"
-                    android:layout_marginTop="8dp"/>
+                    android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/relative_second"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/ruppee_second"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ruppee_sign"/>
-
-                    <TextView
-                        android:id="@+id/deal_regular_price_second"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="128"
-                        android:layout_toEndOf="@id/ruppee_second"
-                        android:layout_marginStart="4dp"/>
-
-                    <TextView
-                        android:id="@+id/deal_off_price_second"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/deal_regular_price_second"
+                    <View
+                        android:id="@+id/view_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.4dp"
                         android:layout_marginStart="8dp"
-                        tools:text="111"
-                        android:textColor="@color/colorPrimary" />
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#cccccc" />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/deal_title_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Chicken Longer Combo"
+                        android:layout_marginTop="8dp"/>
 
+                    <RelativeLayout
+                        android:id="@+id/relative_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/ruppee_second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ruppee_sign"/>
+
+                        <TextView
+                            android:id="@+id/deal_regular_price_second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="128"
+                            android:layout_toEndOf="@id/ruppee_second"
+                            android:layout_marginStart="4dp"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/deal_off_price_second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/deal_regular_price_second"
+                            android:layout_marginStart="8dp"
+                            tools:text="111"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 

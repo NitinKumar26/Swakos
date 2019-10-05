@@ -22,7 +22,10 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.swakos.MainActivity;
 import com.swakos.R;
+import com.swakos.helper.PrefManager;
 import com.swakos.model.User;
+
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Date;
 
@@ -68,7 +71,8 @@ public class UserDetailsFragment extends Fragment {
                 if (!name.isEmpty() && !email.isEmpty()){
                     User newUser = new User();
                     newUser.setName(name);
-                    newUser.setUser_id(userId);
+                    newUser.setUser_doc_id(RandomStringUtils.randomNumeric(8));
+                    newUser.setUser_id(RandomStringUtils.randomNumeric(8));
                     newUser.setProvider_id(providerId);
                     newUser.setEmail(email);
                     newUser.setPhone_number(phoneNumber);
@@ -78,10 +82,19 @@ public class UserDetailsFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
+                                PrefManager prefManager;
+                                if (getContext() != null) {
+                                    prefManager = new PrefManager(getContext());
+                                    if (newUser.getPhone_number() != null)
+                                        prefManager.setUserData(newUser.getName(), newUser.getPhone_number(), newUser.getUser_id());
+                                    else
+                                        prefManager.setUserData(newUser.getName(), newUser.getEmail(), newUser.getUser_id());
+                                }
                                 Intent intent = new Intent(getContext(), MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             }else{
+                                if (task.getException() != null)
                                 Toast.makeText(getContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
                             }
                         }

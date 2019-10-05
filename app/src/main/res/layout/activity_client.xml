@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -54,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorBlack"
-                        android:text="KFC Shopprix Mall, Meerut"
+                        tools:text="KFC Shopprix Mall, Meerut"
                         android:textStyle="bold"
                         />
 
@@ -82,21 +83,12 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/ic_fav"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_alignParentEnd="true"
-                    android:text="4.5"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:background="@drawable/bg_rating"
-                    android:paddingStart="4dp"
-                    android:paddingEnd="4dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"/>
+                    app:srcCompat="@drawable/ic_hearts_grey"/>
 
             </RelativeLayout>
 
@@ -117,7 +109,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:lineSpacingExtra="6dp"
+                android:lineSpacingExtra="4dp"
                 tools:text="With outlets across the world, KFC is one of the few brands that can boast a rich, decades-long history of success and innovation. It all started with one cook who created a soon-to-be world famous recipe more than 70 years ago, a list of secret herbs and spices scratched out on the back of the door to his kitchen "
                 android:textColor="@color/colorAccentLight"/>
 
@@ -128,6 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/relative_main"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
             />
 
         <LinearLayout
@@ -147,7 +141,9 @@
             android:layout_height="wrap_content"
             android:text="@string/standard_terms_conditions"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp" />
+            android:layout_marginTop="12dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_terms"

@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.swakos"
         minSdkVersion 19
@@ -16,23 +16,30 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
-
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    //viewBinding { enabled = true } viewBinding is a part of Android Studio 3.6 (Right now that is in a preview (canary) release version. )
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     //Google Play Location Services
@@ -41,6 +48,10 @@ dependencies {
 
     // Dexter Runtime Permissions
     implementation 'com.karumi:dexter:4.2.0'
+    //Google Play Services Auth Library
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    //Firebase Authentication Library
+    implementation 'com.google.firebase:firebase-auth:19.0.0'
 
     // ButterKnife view binding
     implementation 'com.jakewharton:butterknife:10.0.0'
@@ -50,19 +61,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.0'
 
     //Android Design Support Library
-    implementation 'com.google.android.material:material:1.1.0-alpha09'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
 
     //Firebase Firestore Library
-    implementation 'com.google.firebase:firebase-firestore:21.0.0'
-
-    //Firebase Authentication Library
-    implementation 'com.google.firebase:firebase-auth:19.0.0'
+    implementation 'com.google.firebase:firebase-firestore:21.1.1'
 
     //Firebase Dynamic Links for App Referral (Promotions)
     implementation 'com.google.firebase:firebase-dynamic-links:19.0.0'
 
     //Glide Library to load images in app.
     implementation 'com.github.bumptech.glide:glide:4.9.0'
+    //Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     //Multidex Support Library
@@ -75,8 +84,16 @@ dependencies {
     //Rounded ImageView Library
     implementation 'com.rishabhharit.roundedimageview:RoundedImageView:0.8.4'
     //Kotlin Library
-    implementation "androidx.core:core-ktx:1.0.2"
+    implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
+
+    //Firebase Cloud Messaging Library (Use for Push Notifications)
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+
+    implementation 'org.apache.commons:commons-lang3:3.9'
+
+    //Facebook Shimmer Library
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
 
     //Firebase Core Library
     implementation 'com.google.firebase:firebase-core:17.2.0'
